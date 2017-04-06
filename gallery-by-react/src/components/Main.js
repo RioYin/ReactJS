@@ -59,8 +59,8 @@ class ImgFigure extends React.Component {
         }
 
         if (this.props.arrange.rotate) {
-            (['MozT', 'msT', 'WebkitT', '']).forEach((value) => {
-                styleObj[value + 'ransform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
+            (['Moz', 'ms', 'Webkit', '']).forEach((value) => {
+                styleObj[value + 'Transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
             });
         }
 
@@ -74,18 +74,18 @@ class ImgFigure extends React.Component {
 
         return (
             <figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick}>
-				<img src={this.props.data.imageURL}
+                <img src={this.props.data.imageURL}
             alt={this.props.data.title}
             />
-				<figcaption>
-					<h2 className="img-title">{this.props.data.title}</h2>
-					<div className="img-back" onClick={this.handleClick}>
-						<p>
-							{this.props.data.desc}
-						</p>
-					</div>
-				</figcaption>
-			</figure>
+                <figcaption>
+                    <h2 className="img-title">{this.props.data.title}</h2>
+                    <div className="img-back" onClick={this.handleClick}>
+                        <p>
+                            {this.props.data.desc}
+                        </p>
+                    </div>
+                </figcaption>
+            </figure>
         );
     }
 }
@@ -324,12 +324,12 @@ class AppComponent extends React.Component {
 
         return (
             <section className="stage" ref="stage">
-            	<section className="img-sec">
-            		{imgFigures}
-            	</section>
-            	<nav className="controller-nav">
-            		{controllerUnits}
-            	</nav>
+                <section className="img-sec">
+                    {imgFigures}
+                </section>
+                <nav className="controller-nav">
+                    {controllerUnits}
+                </nav>
             </section>
         );
     }
