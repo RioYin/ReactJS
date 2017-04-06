@@ -59,8 +59,8 @@ class ImgFigure extends React.Component {
         }
 
         if (this.props.arrange.rotate) {
-            (['-moz-', '-ms-', '-webkit-', '']).forEach((value) => {
-                styleObj[value + 'transform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
+            (['MozT', 'msT', 'WebkitT', '']).forEach((value) => {
+                styleObj[value + 'ransform'] = 'rotate(' + this.props.arrange.rotate + 'deg)';
             });
         }
 
@@ -314,11 +314,11 @@ class AppComponent extends React.Component {
                 }
             }
 
-            imgFigures.push(<ImgFigure data={value} ref={'imgFigure' + index}
+            imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure' + index}
             arrange={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)}
             center={this.center(index)}/>);
 
-            controllerUnits.push(<ControllerUnit arrange={this.state.imgsArrangeArr[index]}
+            controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]}
             inverse={this.inverse(index)} center={this.center(index)}/>);
         });
 

@@ -71,10 +71,15 @@ html,body{
         color:#a7a0a2;
         font-size: 22px;
         line-height: 1.25;
-        text-align: center;
+        text-align: left;
         background-color: #fff;
         box-sizing: border-box;
         transform: rotateY(180deg) translateZ(1px);
+        backface-visibility:hidden;
+
+        p{
+          margin:0;
+        }
       }
     }
   }
