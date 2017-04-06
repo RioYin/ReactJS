@@ -1010,7 +1010,7 @@ render() {
 
 * 将绝对路径改为相对路径：
   * 修改src文件夹下的index.html中的`<script type="text/javascript" src="/assets/app.js"></script>`为`<script type="text/javascript" src="assets/app.js"></script>`
-  * 修改cfg文件夹下的default.js中的`publicPath: '/assets/',`为`publicPath: 'assets/',`
+  * 修改cfg文件夹下的default.js中的`publicPath: '/assets/',`为`publicPath: 'assets/',`
   
 * 运行`npm run dist`进行打包
 * 通过`../dist`进行访问
