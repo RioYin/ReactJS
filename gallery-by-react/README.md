@@ -1,10 +1,10 @@
 <h1>图片画廊</h1>
 
-<h2使用YEOMAN生成项目文件</h2>
+<h2>使用YEOMAN生成项目文件</h2>
 
 * 运行`npm install -g yo`安装YEOMAN,运行`yo --version`可以查看YEOMAN版本
 
-<h2安装generator-react-webpack</h2>
+<h2>安装generator-react-webpack</h2>
 
 * 运行`npm install -g generator-react-webpack`安装
 
