@@ -20,21 +20,11 @@
 
 * 运行`npm run dist`打包输出到dist文件夹
 
-<h2>安装autoprefixer-loader</h2>
+<h2>安装配置相关loader</h2>
 
-* 运行`npm install autoprefixer-loader --save-dev`安装
-
-<h2>配置autoprefixer-loader</h2>
-
-* 在cfg文件夹下的default.js文件中修改如下代码：
-
-```
-{
-     test: /\.sass/,
-     loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&indentedSyntax'
-},
-```
-* 修改为：
+* autoprefixer-loader
+  * 先运行`npm install postcss-loader --save-dev`,再运行`npm install autoprefixer-loader --save-dev`安装
+  * 在cfg文件夹下的default.js文件中修改如下代码：
 
 ```
 {
@@ -43,11 +33,48 @@
 },
 ```
 
-* 同时将src文件夹下的styles文件下的App.css重命名为App.scss,并将components文件夹下的Main.js中的`require('styles/App.css');`修改为`require('styles/App.scss');`
+* sass-loader
+  * 先将src文件夹下的styles文件下的App.css重命名为App.scss,再将components文件夹下的Main.js中的`require('styles/App.css');`修改为`require('styles/App.scss');`
+  * 依次运行`npm install node-sass`和`npm install sass-loader -save-dev`,若发现无法进行安装，则先运行`set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/`,再运行`npm install node-sass`即可
 
-* 由于scss文件需要安装sass-loader进行处理，而sass-loader依赖于node-sass，故对其进行安装
+* json-loader
+  * json文件需要安装json-loader进行处理，故运行`npm install json-loader -save-dev`进行安装
+  * 安装之后进行配置，在cfg文件夹下的default.js文件中添加如下代码：
 
-* 若运行`npm install sass-loader -save-dev`会发现无法进行安装，故先运行`set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/`,再运行`npm install node-sass`即可
+```
+{
+    test: /\.json$/,
+    loader: 'json-loader'
+}
+```
+
+<h2>引入相关库，如：bootstrap和jQuery</h2>
+
+* bootstrap
+  * 运行`npm install --save react-bootstrap`安装
+  * 先在头部引入相关模块，如引入按钮：`import { Button } from 'react-bootstrap';`
+  * 然后在render中使用：`<Button >按钮</Button>`
+  * 若想使用全部的CSS样式，则需在index.html文件中引入公共CDN：`<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">`
+
+* jQuery
+  * 运行`npm install --save-dev jquery`安装
+  * 在配置文件中添加下列代码：（如下）并在头部引入：`import $ from 'jquery';`
+  
+```
+plugins:[
+
+new webpack.ProvidePlugin({
+
+  $:"jquery",
+
+  jQuery:"jquery",
+
+  "window.jQuery":"jquery"
+
+})
+
+]
+```
 
 <h2>准备图片数据</h2>
 
@@ -139,17 +166,6 @@
 ```
 
 * 将准备好的图片放入src文件夹下的images文件夹中
-
-* 由于json文件需要安装json-loader进行处理，故运行`npm install json-loader -save-dev`进行安装
-
-* 安装之后进行配置，在cfg文件夹下的default.js文件中添加如下代码：
-
-```
-{
-    test: /\.json$/,
-    loader: 'json-loader'
-}
-```
 
 <h2>获取图片数据并将图片信息转换成图片URL路径信息</h2>
 
